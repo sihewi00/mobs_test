@@ -2,4 +2,4 @@
 
 A simple test repo for the MOBS labs and so on
 
-Hier sind einige inhaltsschwere Worte von Ihrem MOBS-Prof. :)
+dom.html and dom.css contain the exercise for the current session.

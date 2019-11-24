@@ -1,0 +1,10 @@
+p {
+    color: blue;
+    background: #9eff80;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 4em;
+    padding: 20px;
+    border-width: 5px;
+    border-style: solid;
+    margin: 3em;
+}
