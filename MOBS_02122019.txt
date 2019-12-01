@@ -1,0 +1,11 @@
+Entwickeln Sie ein Web-App mit folgenden Eigenschaften: Die Ansicht ist in 3 horizontale Teile aufgeteilt, wobei der obere 15% einnehmen und 6 Buttons anzeigen soll. Der untere Bereich soll 8% einnehmen und Platz für eine Textzeile mit Statusinformationen bieten. Der mittlere Bereich soll in der Mitte ein Bild anzeigen. Dies ist der Zustand, der nach erstmaligem Laden der Seite angezeigt werden soll.
+
+Alles weitere soll geschehen, ohne dass es zu einem Neuladen der Seite kommt:
+
+- Drückt man den ersten Knopf, sollen im mittleren Bereich 2 Reihen à 3 DIVs angezeigt werden. Jeder DIV soll eine eigene Farbe haben, und sie sollen durch einen Abstand von 10px von einander getrennt sein. In jedem DIV soll eine Zufallszahl aus dem Intervall [1;10] stehen. Beim Klicken auf den DIV sollen die DIVs dieser Reihe so organisiert werden, dass der geklickte DIV ganz links erscheint. Die Reihenfolge der anderen soll sich nicht ändern.
+
+- Beim Drücken auf den 2. Knopf sollen ein zufälliger DIV aus dem mittleren Bereich gelöscht werden. Wenn es keine DIVs in diesem Bereich (mehr) gibt, darf kein Fehler auftreten.
+
+- Wenn man den 6. Knopf drückt, sollen in mittleren Teil zufällige Chuck-Norris-Witze angezeigt werden, die bei jedem Klick neu aus dem Internet bezogen werden. Daneben soll ein Bild von Chuck Norris zu sehen sein. Natürlich sollen nur politisch korrekte und anständige Witze angezeigt werden. Hinweis: Benutzen Sie Web-Dienst auf https://api.chucknorris.io/
+
+Und denken Sie daran: Vanilla Javascript, keine Bibliotheken!
