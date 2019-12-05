@@ -96,13 +96,13 @@ button {
 footer div.fadeOut {
     opacity: 0;
     transition: all ease 2s;
-    transition-delay: 2s;
 }
 
 footer div {
     opacity: 1;
     transition: all ease 0s;
     transition-delay: 0s;
+    font-size: 1.5em;
 }
 
 nav ul {

@@ -78,18 +78,15 @@
 
         let footerDivElement = document.querySelector('footer div');
 
-        footerDivElement.style.display='none';
-        footerDivElement.classList.remove("fadeOut");
-        footerDivElement.style.display='block';
-
         footerDivElement.innerHTML = "Removed element.";
-        footerDivElement.classList.add("fadeOut");
+
+        footerDivElement.classList.remove("fadeOut")
+
+        // Delay class setting and allow the element to be rendered visible.
+        setTimeout(() => { footerDivElement.classList.add("fadeOut") }, 2000);
     }
 
-
     function showAbsolutelyTrueChuckNorrisFacts() {
-
-        console.log("cn");
 
         let mainElement = document.querySelector('main');
 
@@ -107,15 +104,15 @@
         fetch('https://api.chucknorris.io/jokes/random')
             .then(resp => resp.json())
             .then(function (data) {
-                console.log("Result: ", data);
+
                 factDivElement.innerHTML = data.value;
             });
 
         let pictureDivElement = document.createElement('div');
         pictureDivElement.classList.add('norrisImage');
-        
+
         pictureDivElement.append(document.createElement('img'));
-        
+
         mainElement.appendChild(pictureDivElement);
     }
 
