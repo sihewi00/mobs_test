@@ -1,10 +1,14 @@
 <!DOCTYPE html>
+
+<!-- Image source: https://commons.wikimedia.org/wiki/File:Chuck_Norris_cropped.jpg -->
+
 <html>
 
 <head>
     <meta charset="utf-8">
     <title>DOM Manipulation</title>
     <link rel="stylesheet" href="ex_02122019.css">
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -25,7 +29,7 @@
     </main>
 
     <footer>
-        I am the footer
+        <div></div>
     </footer>
 </body>
 
@@ -40,10 +44,20 @@
             case 'b1':
                 createDivs();
                 break;
+
+            case 'b2':
+                killDiv();
+                break;
+
+            case 'b6':
+                showAbsolutelyTrueChuckNorrisFacts();
+                break;
         }
 
     }
     function handleMainClick(event) {
+
+        if (event.target.nodeName !== "DIV") return;
 
         let mainElement = document.querySelector('main'),
             divElements = Array.from(mainElement.querySelectorAll('div')),
@@ -51,6 +65,58 @@
             rowHeadElement = divElements[Math.floor(targetIndex / 3) * 3];
 
         mainElement.insertBefore(event.target, rowHeadElement);
+    }
+
+    function killDiv() {
+
+        let mainElement = document.querySelector('main'),
+            divElements = mainElement.querySelectorAll('div');
+
+        if (divElements.length == 0) return;
+
+        divElements[Math.floor(Math.random() * divElements.length)].remove();
+
+        let footerDivElement = document.querySelector('footer div');
+
+        footerDivElement.style.display='none';
+        footerDivElement.classList.remove("fadeOut");
+        footerDivElement.style.display='block';
+
+        footerDivElement.innerHTML = "Removed element.";
+        footerDivElement.classList.add("fadeOut");
+    }
+
+
+    function showAbsolutelyTrueChuckNorrisFacts() {
+
+        console.log("cn");
+
+        let mainElement = document.querySelector('main');
+
+        mainElement.innerHTML = '';
+
+        mainElement.style.gridTemplateColumns = '1fr 1fr 1fr';
+        mainElement.style.gridTemplateRows = '1fr minmax(0, 1fr) 1fr';
+
+        let factDivElement = document.createElement('div');
+        factDivElement.classList.add('norrisFact');
+        factDivElement.style.background = colors[Math.floor(Math.random() * 6)];
+
+        mainElement.appendChild(factDivElement);
+
+        fetch('https://api.chucknorris.io/jokes/random')
+            .then(resp => resp.json())
+            .then(function (data) {
+                console.log("Result: ", data);
+                factDivElement.innerHTML = data.value;
+            });
+
+        let pictureDivElement = document.createElement('div');
+        pictureDivElement.classList.add('norrisImage');
+        
+        pictureDivElement.append(document.createElement('img'));
+        
+        mainElement.appendChild(pictureDivElement);
     }
 
     function createDivs() {
@@ -64,26 +130,19 @@
 
         for (let i = 0; i < 9; i++) {
 
-            let divElement = document.createElement('div');
+            let factDivElement = document.createElement('div');
 
-            divElement.classList.add('panel');
-            divElement.style.background = colors[Math.floor(Math.random() * 6)];
-            divElement.innerHTML = Math.floor(Math.random() * 10 + 1);
+            factDivElement.classList.add('panel');
+            factDivElement.style.background = colors[Math.floor(Math.random() * 6)];
+            factDivElement.innerHTML = Math.floor(Math.random() * 10 + 1);
 
-            mainElement.appendChild(divElement);
+            mainElement.appendChild(factDivElement);
         }
 
         mainElement.addEventListener('click', handleMainClick);
     }
 
     document.querySelector('header').addEventListener('click', handleHeaderClick);
-
-
-    fetch('https://api.chucknorris.io/jokes/random')
-        .then(resp => resp.json())
-        .then(function (data) {
-            console.log("Result: ", data);
-        });
 </script>
 
 </html>
